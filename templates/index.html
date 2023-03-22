@@ -1,0 +1,26 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Flask Form{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>To Production Site</h1>
+        <ul>
+            <li>
+                <a href="{{ url_for('config') }}">Configuration</a>
+            </li>
+            <li>
+                <a href="{{ url_for('setupproj') }}">Setup Project</a>
+            </li>
+            <li>
+                <a href="{{ url_for('securesite') }}">Secure Site</a>
+            </li>
+            <li>
+                <a href="{{ url_for('sitehealth') }}">Site Health</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+{% endblock %}

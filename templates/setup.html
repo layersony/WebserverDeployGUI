@@ -1,0 +1,77 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Flask Form{% endblock %}
+
+{% block content %}
+    <a href="{{ url_for('index') }}">Back</a>
+    <div class="container">
+        <h1>Setup New Project</h1>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li class='text-info'>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('createservice') }}">
+            <h4>Clone Project</h4>
+            <label for="pGitRepo">Project Github Repo:</label>
+            <input type="text" id="pGitRepo" name="pGitRepo">
+            <br>
+
+            <hr>
+            <h4>Create Execution Command</h4>
+            <label for="execCommand">Execution Command:</label>
+            <input type="text" id="execCommand" name="execCommand">
+            <br>
+            <label for="port">Port</label>
+            <select class="browser-default custom-select" id="port" name="port">
+                <option value='select' selected>Select</option>
+            </select>
+            <br>
+
+            <hr>
+            <h4>Create Service</h4>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" placeholder='Homabay Catholic Diocese Service'>
+            <br>
+
+            <hr>
+            <h4>Create Live File (Apache)</h4>
+            <sup><b>http</b> will be created</sup><br>
+            <label for="domainUrl">Domain URL:</label>
+            <input type="text" id="domainUrl" name="domainUrl" placeholder='cdohb.com'>
+            <br>
+
+            <input type="submit" value="Create">
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "{{ url_for('ports') }}",
+            dataType: "json",
+            success: function(data) {
+                var options = "";
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].assign == true){
+                        options += "<option class='text-danger' value=''>" + data[i].port + " (Assigned)</option>";
+                    }else{
+                        options += "<option value='" + data[i].port + "'>" + data[i].port + "</option>";
+                    }
+                }
+                $("#port").append(options);
+            }
+        });
+    });
+</script>
+{% endblock %}

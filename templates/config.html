@@ -1,0 +1,64 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}Flask Form{% endblock %}
+
+{% block content %}
+    <a href="{{ url_for('index') }}">Back</a>
+    <div class="container">
+        <h1>Configurations</h1>
+        <div class='mt-3 mb-3'>
+            <button type="button" class="btn btn-seconday btn-xs" data-toggle="modal" data-target="#myModal">Edit</button>
+        </div>
+        <p>Execution FilePath: <span class='text-primary'>{{data.execFilePath}}</span></p>
+        <p>File Path <span class='text-primary'>{{data.filePath}}</span></p>
+        <p>Apache Path <span class='text-primary'>{{data.apachePath}}</span></p>
+        <p>Service Path <span class='text-primary'>{{data.servicePath}}</span></p>
+        <p>Working Dir <span class='text-primary'>{{data.workingDir}}</span></p>
+        <p>Admin Email <span class='text-primary'>{{data.serverAdminEmail}}</span></p>
+    </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Configurations</h4>
+                </div>
+                <div class="modal-body container">
+                    <form method="POST" action="{{ url_for('configSetup') }}">
+                        <label for="execFilePath">Execution Path</label><br>
+                        <input type="text" id="execFilePath" name="execFilePath" value={{data.execFilePath}}>
+                        <br>
+
+                        <label for="filePath">File Path</label><br>
+                        <input type="text" id="filePath" name="filePath" value={{data.filePath}}>
+                        <br>
+
+                        <label for="apachePath">Apache Path</label><br>
+                        <input type="text" id="apachePath" name="apachePath" value={{data.apachePath}}>
+                        <br>
+
+                        <label for="servicePath">Service Path</label><br>
+                        <input type="text" id="servicePath" name="servicePath" value={{data.servicePath}}>
+                        <br>
+
+                        <label for="workingDir">Working Path</label><br>
+                        <input type="text" id="workingDir" name="workingDir" value={{data.workingDir}}>
+                        <br>
+
+                        <label for="serverAdminEmail">Admin Email</label><br>
+                        <input type="text" id="serverAdminEmail" name="serverAdminEmail" value={{data.serverAdminEmail}}>
+                        <br><br>
+
+                        <input type="submit" value="Update" class="btn btn-success">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
