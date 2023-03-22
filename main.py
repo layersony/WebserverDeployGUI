@@ -172,4 +172,4 @@ if __name__ == '__main__':
         print("You need to have root privileges to run this command.")
         exit()
     else:
-        app.run(debug=True)
+        app.run(debug=True, host='0.0.0.0', port=9010)
