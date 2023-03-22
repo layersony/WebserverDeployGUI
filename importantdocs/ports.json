@@ -1,3 +1,82 @@
 [
-  {"port": "9000", "assign": false}
+{
+  "port": "8000",
+  "assign": false
+},
+{
+  "port": "8001",
+  "assign": false
+},
+{
+  "port": "8002",
+  "assign": false
+},
+{
+  "port": "8003",
+  "assign": false
+},
+{
+  "port": "8004",
+  "assign": false
+},
+{
+  "port": "8005",
+  "assign": false
+},
+{
+  "port": "8006",
+  "assign": false
+},
+{
+  "port": "8007",
+  "assign": false
+},
+{
+  "port": "8008",
+  "assign": false
+},
+{
+  "port": "8009",
+  "assign": false
+},
+{
+  "port": "8010",
+  "assign": false
+},
+{
+  "port": "8011",
+  "assign": false
+},
+{
+  "port": "8012",
+  "assign": false
+},
+{
+  "port": "8013",
+  "assign": false
+},
+{
+  "port": "8014",
+  "assign": false
+},
+{
+  "port": "8015",
+  "assign": false
+},
+{
+  "port": "8016",
+  "assign": false
+},
+{
+  "port": "8017",
+  "assign": false
+},
+{
+  "port": "8018",
+  "assign": false
+},
+{
+  "port": "8019",
+  "assign": false
+}
 ]
