@@ -10,13 +10,13 @@ bootstrap = Bootstrap(app)
 def index():
     return render_template('index.html')
 
-@app.route('/setupproj', methods=['GET'])
+@app.route('/setupproj', methods=['GET', 'POST'])
 def setupproj():
     return render_template('setup.html')
 
 @app.route('/createservice', methods=['POST'])
 def createservice():
-    with open('importantdocs/config.json', 'r') as file:
+    with open('/var/www/html/WebserverDeployGUI/importantdocs/config.json', 'r') as file:
         data = json.load(file)
 
     # clone project params
@@ -62,14 +62,14 @@ exit 0
         f.write(exeFile)
 
     # Assign port
-    with open('importantdocs/ports.json', 'r') as f:
+    with open('/var/www/html/WebserverDeployGUI/importantdocs/ports.json', 'r') as f:
         dataPort = json.load(f)
     
     for d in dataPort:
         if d['port'] == port:
             d['assign'] = True
 
-    with open('importantdocs/ports.json', 'w') as f:
+    with open('/var/www/html/WebserverDeployGUI/importantdocs/ports.json', 'w') as f:
         json.dump(dataPort, f)
 
     # Unit File
@@ -124,9 +124,9 @@ WantedBy=multi-user.target
 def securesite():
     return render_template('secure.html')
 
-@app.route('/config', methods=['GET'])
+@app.route('/config', methods=['GET', 'POST'])
 def config():
-    with open('importantdocs/config.json', 'r') as file:
+    with open('/var/www/html/WebserverDeployGUI/importantdocs/config.json', 'r') as file:
         data = json.load(file)
     return render_template('config.html', data=data)
 
@@ -142,7 +142,7 @@ def configSetup():
     if any(x == '' for x in [execFilePath, filePath, apachePath, servicePath, workingDir, serverAdminEmail]):
         return redirect('configSetup')
 
-    with open('importantdocs/config.json', 'r') as f:
+    with open('/var/www/html/WebserverDeployGUI/importantdocs/config.json', 'r') as f:
         data = json.load(f)
 
     data["execFilePath"] = execFilePath
@@ -152,7 +152,7 @@ def configSetup():
     data["workingDir"] = workingDir
     data["serverAdminEmail"] = serverAdminEmail
 
-    with open('importantdocs/config.json', 'w') as file:
+    with open('/var/www/html/WebserverDeployGUI/importantdocs/config.json', 'w') as file:
         json.dump(data, file)
 
     return render_template('config.html', data=data)
@@ -163,7 +163,7 @@ def sitehealth():
 
 @app.route('/ports', methods=['GET'])
 def ports():
-    with open('importantdocs/ports.json', 'r') as f:
+    with open('/var/www/html/WebserverDeployGUI/importantdocs/ports.json', 'r') as f:
         data = json.load(f)
     return jsonify(data)
 
