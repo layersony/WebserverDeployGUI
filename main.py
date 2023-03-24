@@ -16,7 +16,7 @@ def setupproj():
 
 @app.route('/createservice', methods=['POST'])
 def createservice():
-    with open('importantdocs/config.json', 'r') as file:
+    with open(f'{os.getcwd()}/importantdocs/config.json', 'r') as file:
         data = json.load(file)
 
     # clone project params
@@ -62,14 +62,14 @@ exit 0
         f.write(exeFile)
 
     # Assign port
-    with open('importantdocs/ports.json', 'r') as f:
+    with open(f'{os.getcwd()}/importantdocs/ports.json', 'r') as f:
         dataPort = json.load(f)
     
     for d in dataPort:
         if d['port'] == port:
             d['assign'] = True
 
-    with open('importantdocs/ports.json', 'w') as f:
+    with open(f'{os.getcwd()}/importantdocs/ports.json', 'w') as f:
         json.dump(dataPort, f)
 
     # Unit File
@@ -126,7 +126,7 @@ def securesite():
 
 @app.route('/config', methods=['GET'])
 def config():
-    with open('importantdocs/config.json', 'r') as file:
+    with open(f'{os.getcwd()}/importantdocs/config.json', 'r') as file:
         data = json.load(file)
     return render_template('config.html', data=data)
 
@@ -142,7 +142,7 @@ def configSetup():
     if any(x == '' for x in [execFilePath, filePath, apachePath, servicePath, workingDir, serverAdminEmail]):
         return redirect('configSetup')
 
-    with open('importantdocs/config.json', 'r') as f:
+    with open(f'{os.getcwd()}/importantdocs/config.json', 'r') as f:
         data = json.load(f)
 
     data["execFilePath"] = execFilePath
@@ -152,7 +152,7 @@ def configSetup():
     data["workingDir"] = workingDir
     data["serverAdminEmail"] = serverAdminEmail
 
-    with open('importantdocs/config.json', 'w') as file:
+    with open(f'{os.getcwd()}/importantdocs/config.json', 'w') as file:
         json.dump(data, file)
 
     return render_template('config.html', data=data)
@@ -163,7 +163,7 @@ def sitehealth():
 
 @app.route('/ports', methods=['GET'])
 def ports():
-    with open('importantdocs/ports.json', 'r') as f:
+    with open(f'{os.getcwd()}/importantdocs/ports.json', 'r') as f:
         data = json.load(f)
     return jsonify(data)
 
