@@ -20,13 +20,13 @@
         <form method="POST" action="{{ url_for('createservice') }}">
             <h4>Clone Project</h4>
             <label for="pGitRepo">Project Github Repo:</label>
-            <input type="text" id="pGitRepo" name="pGitRepo">
+            <input required type="text" id="pGitRepo" name="pGitRepo">
             <br>
 
             <hr>
             <h4>Create Execution Command</h4>
             <label for="execCommand">Execution Command:</label>
-            <input type="text" id="execCommand" name="execCommand">
+            <input required type="text" id="execCommand" name="execCommand">
             <br>
             <label for="port">Port</label>
             <select class="browser-default custom-select" id="port" name="port">
@@ -37,14 +37,14 @@
             <hr>
             <h4>Create Service</h4>
             <label for="description">Description:</label>
-            <input type="text" id="description" name="description" placeholder='Homabay Catholic Diocese Service'>
+            <input required type="text" id="description" name="description" placeholder='Homabay Catholic Diocese Service'>
             <br>
 
             <hr>
             <h4>Create Live File (Apache)</h4>
             <sup><b>http</b> will be created</sup><br>
             <label for="domainUrl">Domain URL:</label>
-            <input type="text" id="domainUrl" name="domainUrl" placeholder='cdohb.com'>
+            <input required type="text" id="domainUrl" name="domainUrl" placeholder='cdohb.com'>
             <br>
 
             <input type="submit" value="Create">

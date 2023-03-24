@@ -27,27 +27,27 @@
                 <div class="modal-body container">
                     <form method="POST" action="{{ url_for('configSetup') }}">
                         <label for="execFilePath">Execution Path</label><br>
-                        <input type="text" id="execFilePath" name="execFilePath" value={{data.execFilePath}}>
+                        <input required type="text" id="execFilePath" name="execFilePath" value={{data.execFilePath}}>
                         <br>
 
                         <label for="filePath">File Path</label><br>
-                        <input type="text" id="filePath" name="filePath" value={{data.filePath}}>
+                        <input required type="text" id="filePath" name="filePath" value={{data.filePath}}>
                         <br>
 
                         <label for="apachePath">Apache Path</label><br>
-                        <input type="text" id="apachePath" name="apachePath" value={{data.apachePath}}>
+                        <input required type="text" id="apachePath" name="apachePath" value={{data.apachePath}}>
                         <br>
 
                         <label for="servicePath">Service Path</label><br>
-                        <input type="text" id="servicePath" name="servicePath" value={{data.servicePath}}>
+                        <input required type="text" id="servicePath" name="servicePath" value={{data.servicePath}}>
                         <br>
 
                         <label for="workingDir">Working Path</label><br>
-                        <input type="text" id="workingDir" name="workingDir" value={{data.workingDir}}>
+                        <input required type="text" id="workingDir" name="workingDir" value={{data.workingDir}}>
                         <br>
 
                         <label for="serverAdminEmail">Admin Email</label><br>
-                        <input type="text" id="serverAdminEmail" name="serverAdminEmail" value={{data.serverAdminEmail}}>
+                        <input required type="text" id="serverAdminEmail" name="serverAdminEmail" value={{data.serverAdminEmail}}>
                         <br><br>
 
                         <input type="submit" value="Update" class="btn btn-success">
