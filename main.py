@@ -126,9 +126,18 @@ def securesite():
 
 @app.route('/config', methods=['GET'])
 def config():
-    with open(f'{os.getcwd()}/importantdocs/config.json', 'r') as file:
-        data = json.load(file)
-    return render_template('config.html', data=data)
+    # with open(f'{os.getcwd()}/importantdocs/config.json', 'r') as file:
+    #     data = json.load(file)
+
+    file_path = os.path.join(os.getcwd(), 'importantdocs', 'config.json')
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+        return render_template('config.html', data=data)
+    else:
+        flash(f"The file '{file_path}' does not exist.")
+        return redirect('/')
+    
 
 @app.route('/configSetup', methods=['POST'])
 def configSetup():

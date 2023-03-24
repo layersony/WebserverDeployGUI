@@ -6,6 +6,15 @@
     <a href="{{ url_for('index') }}">Back</a>
     <div class="container">
         <h1>Site Health</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li class='text-info'>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
  
     </div>
 

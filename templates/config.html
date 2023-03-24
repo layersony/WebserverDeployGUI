@@ -6,6 +6,16 @@
     <a href="{{ url_for('index') }}">Back</a>
     <div class="container">
         <h1>Configurations</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li class='text-info'>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
         <div class='mt-3 mb-3'>
             <button type="button" class="btn btn-seconday btn-xs" data-toggle="modal" data-target="#myModal">Edit</button>
         </div>
